@@ -10,7 +10,6 @@ class Track(db.Model):
     transportType = db.Column(db.String(20), nullable=False)
     supplier = db.Column(db.String(20), nullable=False, default='Angela')
     currentStatus = db.Column(db.String(100), nullable=False)
-    intervalProgress = db.Column(db.Integer, default=50)
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
 
     points = db.relationship('Point', backref='track', cascade='all, delete-orphan')

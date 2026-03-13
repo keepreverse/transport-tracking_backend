@@ -49,7 +49,6 @@ def get_tracks():
             'transportType': t.transportType,
             'supplier': t.supplier,
             'currentStatus': t.currentStatus,
-            'intervalProgress': t.intervalProgress,
             'points': points
         })
     return jsonify(result)
@@ -63,8 +62,7 @@ def create_track():
         name=data['name'],
         transportType=data['transportType'],
         supplier=data.get('supplier', 'Angela'),
-        currentStatus=data.get('currentStatus', 'Отгрузка'),
-        intervalProgress=data.get('intervalProgress', 50)
+        currentStatus=data.get('currentStatus', 'Отгрузка')
     )
     db.session.add(new_track)
     db.session.flush()
@@ -101,7 +99,6 @@ def get_track(track_id):
         'transportType': track.transportType,
         'supplier': track.supplier,
         'currentStatus': track.currentStatus,
-        'intervalProgress': track.intervalProgress,
         'points': points
     })
 
@@ -114,8 +111,6 @@ def update_track(track_id):
         track.name = data['name']
     if 'currentStatus' in data:
         track.currentStatus = data['currentStatus']
-    if 'intervalProgress' in data:
-        track.intervalProgress = data['intervalProgress']
 
     if 'points' in data:
         # Ожидается массив объектов с полями order, date, comment
@@ -153,8 +148,7 @@ def copy_track(track_id):
         name=f"{original.name} (копия)",
         transportType=original.transportType,
         supplier=original.supplier,
-        currentStatus=original.currentStatus,
-        intervalProgress=original.intervalProgress
+        currentStatus=original.currentStatus
     )
     db.session.add(new_track)
     db.session.flush()
