@@ -17,9 +17,9 @@ def upload_file():
     uploaded_files = request.files.getlist('files')
     saved = []
     for f in uploaded_files:
-        # Сохраняем оригинальное имя без изменений
+
         original_name = f.filename
-        # Извлекаем расширение
+
         _, ext = os.path.splitext(original_name)
         new_filename = generate_uuid() + ext
         save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], new_filename)

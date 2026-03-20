@@ -113,7 +113,7 @@ def update_track(track_id):
         track.currentStatus = data['currentStatus']
 
     if 'points' in data:
-        # Ожидается массив объектов с полями order, date, comment
+
         for point_update in data['points']:
             order = point_update.get('order')
             point = Point.query.filter_by(track_id=track.id, order=order).first()

@@ -35,6 +35,5 @@ class File(db.Model):
     type = db.Column(db.String(100), nullable=False)
     path = db.Column(db.String(500), nullable=False)
 
-# Индексы для ускорения запросов
 db.Index('idx_point_track_id', Point.track_id)
 db.Index('idx_file_point_id', File.point_id)
